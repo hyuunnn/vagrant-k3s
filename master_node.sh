@@ -1,7 +1,7 @@
 sudo sed -i 's@mirrors.edge.kernel.org@mirror.kakao.com@g' /etc/apt/sources.list
 
 sudo apt-get update
-sudo apt-get install -y docker.io nfs-common dnsutils curl vim git
+sudo apt-get install -y docker.io nfs-common dnsutils curl vim git net-tools
 
 MASTER_IP="192.168.123.120"
 
