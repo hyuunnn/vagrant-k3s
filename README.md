@@ -12,6 +12,7 @@ $ vagrant up
 
 ```console
 $ vagrant ssh master or ssh vagrant@localhost -p60010 or ssh vagrant@192.168.123.120
+$ sudo -i
 ```
 
 ### Worker Node
