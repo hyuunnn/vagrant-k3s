@@ -1,0 +1,4 @@
+.vagrant
+.venv
+master_ip
+node-token
