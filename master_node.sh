@@ -1,5 +1,7 @@
+# change mirror server
 sudo sed -i 's@mirrors.edge.kernel.org@mirror.kakao.com@g' /etc/apt/sources.list
 
+# disable swap
 swapoff -a
 sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 
@@ -14,6 +16,13 @@ source ~/.bashrc
 sudo apt-get update
 sudo apt-get install -y docker.io nfs-common dnsutils curl vim git net-tools
 
+# helm install
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+rm get_helm.sh
+
+# k3s install
 MASTER_IP="192.168.123.120"
 
 # https://velog.io/@pipi
