@@ -1,5 +1,16 @@
 sudo sed -i 's@mirrors.edge.kernel.org@mirror.kakao.com@g' /etc/apt/sources.list
 
+swapoff -a
+sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+
+# https://kubernetes.io/ko/docs/tasks/tools/included/optional-kubectl-configs-bash-linux/
+sudo apt-get install -y bash-completion
+type _init_completion
+echo 'source <(kubectl completion bash)' >>~/.bashrc
+echo 'alias k=kubectl' >>~/.bashrc
+echo 'complete -o default -F __start_kubectl k' >>~/.bashrc
+source ~/.bashrc
+
 sudo apt-get update
 sudo apt-get install -y docker.io nfs-common dnsutils curl vim git net-tools
 
