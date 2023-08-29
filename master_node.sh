@@ -16,7 +16,7 @@ chmod 700 get_helm.sh
 rm get_helm.sh
 
 # k3s install
-MASTER_IP="192.168.123.120"
+MASTER_IP=$(ip addr show eth1 | grep -Eo 'inet [0-9\.]+' | awk '{print $2}')
 
 # https://velog.io/@pipi
 # https://github.com/bjpublic/core_kubernetes/tree/master/chapters/03
