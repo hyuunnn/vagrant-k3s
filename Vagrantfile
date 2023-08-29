@@ -37,6 +37,7 @@ Vagrant.configure("2") do |config|
       cfg.vm.network "private_network", ip: "192.168.123.12#{i}"
       cfg.vm.network "forwarded_port", guest: 22, host: "4010#{i}", auto_correct: true, id: "ssh"
       cfg.vm.synced_folder ".", "/vagrant", disabled: false
+      cfg.vm.provision "shell", path: "config.sh", args: N
       cfg.vm.provision "shell", path: "worker_node.sh"
     end
   end
