@@ -44,3 +44,12 @@ cp ${NODE_TOKEN} /vagrant/
 sleep 5
 MASTER_IP=$(kubectl get node master -ojsonpath="{.status.addresses[0].address}")
 echo ${MASTER_IP} > /vagrant/master_ip
+
+# prometheus + grafana install
+#kubectl create namespace monitoring
+#helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+#helm repo update
+#helm install prometheus prometheus-community/kube-prometheus-stack --namespace monitoring
+
+#kubectl expose service prometheus-kube-prometheus-prometheus -n monitoring --type=NodePort --target-port=9090 --name=prometheus-server-exp
+#kubectl expose service prometheus-grafana -n monitoring --type=NodePort --target-port=3000 --name=grafana-server-exp
