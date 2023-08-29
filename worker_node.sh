@@ -1,8 +1,3 @@
-sudo sed -i 's@mirrors.edge.kernel.org@mirror.kakao.com@g' /etc/apt/sources.list
-
-swapoff -a
-sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
-
 sudo apt-get update
 sudo apt-get install -y docker.io nfs-common curl vim net-tools
 

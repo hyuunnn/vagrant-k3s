@@ -2,6 +2,8 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
+  N = 3
+
   config.vm.define "master" do |cfg|
     cfg.vm.box = "generic/ubuntu2204"
     cfg.vm.host_name = "master"
@@ -15,13 +17,12 @@ Vagrant.configure("2") do |config|
     
     cfg.vm.network "private_network", ip: "192.168.123.120"
     cfg.vm.network "forwarded_port", guest: 22, host: 40010, auto_correct: true, id: "ssh"
-    cfg.vm.network "forwarded_port", guest: 6443, host: 6443 # K3s supervisor and Kubernetes API Server
-    cfg.vm.network "forwarded_port", guest: 6444, host: 6444 # K3S_LB_SERVER_PORT
     cfg.vm.synced_folder ".", "/vagrant", disabled: false
+    cfg.vm.provision "shell", path: "config.sh", args: N
     cfg.vm.provision "shell", path: "master_node.sh"
   end
 
-  (1..3).each do |i|
+  (1..N).each do |i|
     config.vm.define "worker#{i}" do |cfg|
       cfg.vm.box = "generic/ubuntu2204"
       cfg.vm.host_name = "worker#{i}"

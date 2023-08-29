@@ -1,9 +1,5 @@
-# change mirror server
-sudo sed -i 's@mirrors.edge.kernel.org@mirror.kakao.com@g' /etc/apt/sources.list
-
-# disable swap
-swapoff -a
-sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+sudo apt-get update
+sudo apt-get install -y docker.io nfs-common dnsutils curl vim git net-tools
 
 # https://kubernetes.io/ko/docs/tasks/tools/included/optional-kubectl-configs-bash-linux/
 sudo apt-get install -y bash-completion
@@ -12,9 +8,6 @@ echo 'source <(kubectl completion bash)' >>~/.bashrc
 echo 'alias k=kubectl' >>~/.bashrc
 echo 'complete -o default -F __start_kubectl k' >>~/.bashrc
 source ~/.bashrc
-
-sudo apt-get update
-sudo apt-get install -y docker.io nfs-common dnsutils curl vim git net-tools
 
 # helm install
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
@@ -27,6 +20,7 @@ MASTER_IP="192.168.123.120"
 
 # https://velog.io/@pipi
 # https://github.com/bjpublic/core_kubernetes/tree/master/chapters/03
+# https://github.com/rgl/k3s-vagrant/blob/master/provision-k3s-server.sh
 curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="\
     --disable traefik \
     --node-name master --docker \
