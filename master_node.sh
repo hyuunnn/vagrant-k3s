@@ -31,6 +31,7 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="\
     --disable traefik \
     --node-name master --docker \
     --node-ip ${MASTER_IP} \
+    --flannel-iface 'eth1' \
     --disable servicelb " sh -s -
 
 mkdir ~/.kube

@@ -14,9 +14,9 @@ Vagrant.configure("2") do |config|
     end
     
     cfg.vm.network "private_network", ip: "192.168.123.120"
-    cfg.vm.network "forwarded_port", guest: 22, host: 60010, auto_correct: true, id: "ssh"
-    cfg.vm.network "forwarded_port", guest: 6443, host: 6443
-    cfg.vm.network "forwarded_port", guest: 6444, host: 6444
+    cfg.vm.network "forwarded_port", guest: 22, host: 40010, auto_correct: true, id: "ssh"
+    cfg.vm.network "forwarded_port", guest: 6443, host: 6443 # K3s supervisor and Kubernetes API Server
+    cfg.vm.network "forwarded_port", guest: 6444, host: 6444 # K3S_LB_SERVER_PORT
     cfg.vm.synced_folder ".", "/vagrant", disabled: false
     cfg.vm.provision "shell", path: "master_node.sh"
   end
@@ -34,7 +34,7 @@ Vagrant.configure("2") do |config|
       end
 
       cfg.vm.network "private_network", ip: "192.168.123.12#{i}"
-      cfg.vm.network "forwarded_port", guest: 22, host: "6010#{i}", auto_correct: true, id: "ssh"
+      cfg.vm.network "forwarded_port", guest: 22, host: "4010#{i}", auto_correct: true, id: "ssh"
       cfg.vm.synced_folder ".", "/vagrant", disabled: false
       cfg.vm.provision "shell", path: "worker_node.sh"
     end
