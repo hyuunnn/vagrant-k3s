@@ -26,7 +26,8 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="\
     --node-name master --docker \
     --node-ip ${MASTER_IP} \
     --flannel-iface 'eth1' \
-    --disable servicelb " sh -s -
+    --disable servicelb " \
+    INSTALL_K3S_VERSION="v1.26.4+k3s1" sh -s -
 
 mkdir ~/.kube
 sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
