@@ -10,6 +10,7 @@ echo 'complete -o default -F __start_kubectl k' >> ~/.bashrc
 source ~/.bashrc
 
 # kubernetes alias
+# https://github.com/ahmetb/kubectl-aliases
 echo "alias ka='kubectl apply --recursive -f'" >> ~/.bashrc
 echo "alias kex='kubectl exec -it'" >> ~/.bashrc
 echo "alias kgp='kubectl get pods -o wide'" >> ~/.bashrc
