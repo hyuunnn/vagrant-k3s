@@ -10,12 +10,14 @@ echo 'complete -o default -F __start_kubectl k' >>~/.bashrc
 source ~/.bashrc
 
 # helm install
+# https://github.com/helm/helm
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 chmod 700 get_helm.sh
 ./get_helm.sh
 rm get_helm.sh
 
 # k3s install
+# https://github.com/k3s-io/k3s
 MASTER_IP=$(ip addr show eth1 | grep -Eo 'inet [0-9\.]+' | awk '{print $2}')
 
 # https://velog.io/@pipi
@@ -36,17 +38,30 @@ echo "export KUBECONFIG=~/.kube/config" >> ~/.bashrc
 source ~/.bashrc
 
 NODE_TOKEN="/var/lib/rancher/k3s/server/node-token"
-#while [ ! -e "${NODE_TOKEN}" ]
-#do
-#    sleep 2
-#done
+# while [ ! -e "${NODE_TOKEN}" ]
+# do
+#     sleep 2
+# done
 cp ${NODE_TOKEN} /vagrant/
 
 sleep 5
 MASTER_IP=$(kubectl get node master -ojsonpath="{.status.addresses[0].address}")
 echo ${MASTER_IP} > /vagrant/master_ip
 
+# kube-ps1 install
+git clone https://github.com/jonmosco/kube-ps1 .kube-ps1
+chmod +x ./.kube-ps1/kube-ps1.sh
+
+echo "source $HOME/.kube-ps1/kube-ps1.sh" >> ~/.bashrc
+echo "PS1='[\u@\h \W $(kube_ps1)]\$ '" >> ~/.bashrc
+echo "KUBE_PS1_SYMBOL_ENABLE=false" >> ~/.bashrc
+# source ~/.bashrc
+
 # https://youtu.be/UfKZPEk6D0k
+
+## kubent install
+## https://github.com/doitintl/kube-no-trouble
+## sh -c "$(curl -sSL https://git.io/install-kubent)"
 
 ## krew install
 ## https://krew.sigs.k8s.io/docs/user-guide/setup/install/
@@ -62,20 +77,25 @@ echo ${MASTER_IP} > /vagrant/master_ip
 echo "export PATH=\"${KREW_ROOT:-$HOME/.krew}/bin:$PATH\"" >> ~/.bashrc
 source ~/.bashrc
 
-## https://github.com/itaysk/kubectl-neat
+## krew plugins
+### https://github.com/itaysk/kubectl-neat
 kubectl krew install neat
 
-## https://github.com/tohjustin/kube-lineage
+### https://github.com/tohjustin/kube-lineage
 kubectl krew install lineage
 
-## https://github.com/stern/stern
+### https://github.com/stern/stern
 kubectl krew install stern
 
-# prometheus + grafana install
-#kubectl create namespace monitoring
-#helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-#helm repo update
-#helm install prometheus prometheus-community/kube-prometheus-stack --namespace monitoring
+### https://github.com/ahmetb/kubectx
+kubectl krew install ctx
+kubectl krew install ns
 
-#kubectl expose service prometheus-kube-prometheus-prometheus -n monitoring --type=NodePort --target-port=9090 --name=prometheus-server-exp
-#kubectl expose service prometheus-grafana -n monitoring --type=NodePort --target-port=3000 --name=grafana-server-exp
+# prometheus + grafana install
+# kubectl create namespace monitoring
+# helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+# helm repo update
+# helm install prometheus prometheus-community/kube-prometheus-stack --namespace monitoring
+
+# kubectl expose service prometheus-kube-prometheus-prometheus -n monitoring --type=NodePort --target-port=9090 --name=prometheus-server-exp
+# kubectl expose service prometheus-grafana -n monitoring --type=NodePort --target-port=3000 --name=grafana-server-exp
