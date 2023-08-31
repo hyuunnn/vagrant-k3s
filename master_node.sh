@@ -4,9 +4,22 @@ sudo apt-get install -y docker.io nfs-common dnsutils curl vim git net-tools
 # https://kubernetes.io/ko/docs/tasks/tools/included/optional-kubectl-configs-bash-linux/
 sudo apt-get install -y bash-completion
 type _init_completion
-echo 'source <(kubectl completion bash)' >>~/.bashrc
-echo 'alias k=kubectl' >>~/.bashrc
-echo 'complete -o default -F __start_kubectl k' >>~/.bashrc
+echo 'source <(kubectl completion bash)' >> ~/.bashrc
+echo 'alias k=kubectl' >> ~/.bashrc
+echo 'complete -o default -F __start_kubectl k' >> ~/.bashrc
+source ~/.bashrc
+
+# kubernetes alias
+echo "alias ka='kubectl apply --recursive -f'" >> ~/.bashrc
+echo "alias kex='kubectl exec -it'" >> ~/.bashrc
+echo "alias kgp='kubectl get pods -o wide'" >> ~/.bashrc
+echo "alias kgd='kubectl get deploy -o wide'" >> ~/.bashrc
+echo "alias kgs='kubectl get service -o wide'" >> ~/.bashrc
+echo "alias kgn='kubectl get nodes -o wide'" >> ~/.bashrc
+echo "alias kgew='kubectl get events -w'" >> ~/.bashrc
+echo "alias kgpa='kubectl get pods -o wide -A'" >> ~/.bashrc
+echo "alias kgpw='kubectl get pods -o wide -w'" >> ~/.bashrc
+echo "alias kgpaw='kubectl get pods -o wide -A -w'" >> ~/.bashrc
 source ~/.bashrc
 
 # helm install
@@ -49,13 +62,13 @@ MASTER_IP=$(kubectl get node master -ojsonpath="{.status.addresses[0].address}")
 echo ${MASTER_IP} > /vagrant/master_ip
 
 # kube-ps1 install
-git clone https://github.com/jonmosco/kube-ps1 .kube-ps1
-chmod +x ./.kube-ps1/kube-ps1.sh
+git clone https://github.com/jonmosco/kube-ps1 ~/.kube-ps1
+chmod +x ~/.kube-ps1/kube-ps1.sh
 
-echo "source $HOME/.kube-ps1/kube-ps1.sh" >> ~/.bashrc
-echo "PS1='[\u@\h \W $(kube_ps1)]\$ '" >> ~/.bashrc
+echo "source ~/.kube-ps1/kube-ps1.sh" >> ~/.bashrc
+echo "PS1='[\u@\h \W \$(kube_ps1)]\\$ '" >> ~/.bashrc
 echo "KUBE_PS1_SYMBOL_ENABLE=false" >> ~/.bashrc
-# source ~/.bashrc
+source ~/.bashrc
 
 # https://youtu.be/UfKZPEk6D0k
 
@@ -79,17 +92,17 @@ source ~/.bashrc
 
 ## krew plugins
 ### https://github.com/itaysk/kubectl-neat
-kubectl krew install neat
+${KREW_ROOT:-$HOME/.krew}/bin/kubectl-krew install neat
 
 ### https://github.com/tohjustin/kube-lineage
-kubectl krew install lineage
+${KREW_ROOT:-$HOME/.krew}/bin/kubectl-krew install lineage
 
 ### https://github.com/stern/stern
-kubectl krew install stern
+${KREW_ROOT:-$HOME/.krew}/bin/kubectl-krew install stern
 
 ### https://github.com/ahmetb/kubectx
-kubectl krew install ctx
-kubectl krew install ns
+${KREW_ROOT:-$HOME/.krew}/bin/kubectl-krew install ctx
+${KREW_ROOT:-$HOME/.krew}/bin/kubectl-krew install ns
 
 # prometheus + grafana install
 # kubectl create namespace monitoring
