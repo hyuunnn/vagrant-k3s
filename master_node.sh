@@ -33,6 +33,10 @@ echo "alias hga='helm get all'" >> ~/.bashrc
 echo "alias ht='helm template'" >> ~/.bashrc
 # helm list
 echo "alias hl='helm list'" >> ~/.bashrc
+# helm list -A
+echo "alias hla='helm list -A'" >> ~/.bashrc
+# helm upgrade
+echo "alias hu='helm upgrade'" >> ~/.bashrc
 
 source ~/.bashrc
 
