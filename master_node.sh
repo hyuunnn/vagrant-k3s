@@ -23,10 +23,17 @@ echo "alias kgpw='kubectl get pods -o wide -w'" >> ~/.bashrc
 echo "alias kgpaw='kubectl get pods -o wide -A -w'" >> ~/.bashrc
 
 echo "alias h=helm" >> ~/.bashrc
+# helm install t1 .
+echo "alias hi='helm install'" >> ~/.bashrc
+# helm delete t1
+echo "alias hd='helm delete'" >> ~/.bashrc
 # helm get all -n test t1
 echo "alias hga='helm get all'" >> ~/.bashrc
 # helm template -n test t1 .
 echo "alias ht='helm template'" >> ~/.bashrc
+# helm list
+echo "alias hl='helm list'" >> ~/.bashrc
+
 source ~/.bashrc
 
 # helm install
