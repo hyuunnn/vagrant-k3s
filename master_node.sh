@@ -86,6 +86,7 @@ chmod +x ~/.kube-ps1/kube-ps1.sh
 
 echo "source ~/.kube-ps1/kube-ps1.sh" >> ~/.bashrc
 echo "PS1='[\u@\h \W \$(kube_ps1)]\\$ '" >> ~/.bashrc
+echo "PS1='\$(kube_ps1) \u@\h:\W\\$ '" >> ~/.bashrc
 echo "KUBE_PS1_SYMBOL_ENABLE=false" >> ~/.bashrc
 source ~/.bashrc
 
