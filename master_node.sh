@@ -128,6 +128,17 @@ ${KREW_ROOT:-$HOME/.krew}/bin/kubectl-krew install ns
 ${KREW_ROOT:-$HOME/.krew}/bin/kubectl-krew index add kvaps https://github.com/kvaps/krew-index
 ${KREW_ROOT:-$HOME/.krew}/bin/kubectl-krew install kvaps/node-shell
 
+### https://github.com/robscott/kube-capacity
+${KREW_ROOT:-$HOME/.krew}/bin/kubectl-krew install resource-capacity
+
+### https://github.com/davidB/kubectl-view-allocations
+${KREW_ROOT:-$HOME/.krew}/bin/kubectl-krew install view-allocations
+
+# k9s install
+# https://github.com/derailed/k9s
+# path: /snap/k9s/current/bin/k9s
+snap install k9s
+
 # prometheus + grafana install
 # kubectl create namespace monitoring
 # helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
