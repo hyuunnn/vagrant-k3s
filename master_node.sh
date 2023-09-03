@@ -11,6 +11,7 @@ source ~/.bashrc
 
 # kubernetes alias
 # https://github.com/ahmetb/kubectl-aliases
+echo "alias klo='kubectl logs -f'" >> ~/.bashrc
 echo "alias ka='kubectl apply --recursive -f'" >> ~/.bashrc
 echo "alias kex='kubectl exec -it'" >> ~/.bashrc
 echo "alias kgp='kubectl get pods -o wide'" >> ~/.bashrc
@@ -121,6 +122,10 @@ ${KREW_ROOT:-$HOME/.krew}/bin/kubectl-krew install stern
 ### https://github.com/ahmetb/kubectx
 ${KREW_ROOT:-$HOME/.krew}/bin/kubectl-krew install ctx
 ${KREW_ROOT:-$HOME/.krew}/bin/kubectl-krew install ns
+
+### https://github.com/kvaps/kubectl-node-shell
+${KREW_ROOT:-$HOME/.krew}/bin/kubectl-krew index add kvaps https://github.com/kvaps/krew-index
+${KREW_ROOT:-$HOME/.krew}/bin/kubectl-krew install kvaps/node-shell
 
 # prometheus + grafana install
 # kubectl create namespace monitoring
