@@ -15,5 +15,5 @@ echo "set mouse=a" >> ~/.vimrc
 echo "set ignorecase" >> ~/.vimrc
 echo "set hlsearch" >> ~/.vimrc
 echo "set incsearch" >> ~/.vimrc
-echo "set softtabstop=4" >> ~/.vimrc
-echo "set tabstop=4" >> ~/.vimrc
+echo "set softtabstop=2" >> ~/.vimrc
+echo "set tabstop=2" >> ~/.vimrc
