@@ -17,3 +17,4 @@ echo "set hlsearch" >> ~/.vimrc
 echo "set incsearch" >> ~/.vimrc
 echo "set softtabstop=2" >> ~/.vimrc
 echo "set tabstop=2" >> ~/.vimrc
+echo "set expandtab" >> ~/.vimrc
