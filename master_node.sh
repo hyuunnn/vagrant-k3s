@@ -13,6 +13,8 @@ source ~/.bashrc
 # https://github.com/ahmetb/kubectl-aliases
 echo "alias klo='kubectl logs -f'" >> ~/.bashrc
 echo "alias ka='kubectl apply --recursive -f'" >> ~/.bashrc
+echo "alias kd='kubectl describe'" >> ~/.bashrc
+echo "alias krm='kubectl delete'" >> ~/.bashrc
 echo "alias kex='kubectl exec -it'" >> ~/.bashrc
 echo "alias kgp='kubectl get pods -o wide'" >> ~/.bashrc
 echo "alias kgd='kubectl get deploy -o wide'" >> ~/.bashrc
