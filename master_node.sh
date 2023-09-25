@@ -31,6 +31,12 @@ echo "alias h=helm" >> ~/.bashrc
 echo "alias hi='helm install'" >> ~/.bashrc
 # helm delete t1
 echo "alias hd='helm delete'" >> ~/.bashrc
+# helm repo add bitnami https://charts.bitnami.com/bitnami
+echo "alias hra='helm repo add'" >> ~/.bashrc
+# helm search repo nginx
+echo "alias hsr='helm search repo'" >> ~/.bashrc
+# helm pull bitnami/nginx
+echo "alias hp='helm pull'" >> ~/.bashrc
 # helm get all -n test t1
 echo "alias hga='helm get all'" >> ~/.bashrc
 # helm template -n test t1 .
