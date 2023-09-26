@@ -17,6 +17,7 @@ echo "alias kd='kubectl describe'" >> ~/.bashrc
 echo "alias krm='kubectl delete'" >> ~/.bashrc
 echo "alias kex='kubectl exec -it'" >> ~/.bashrc
 echo "alias kge='kubectl get events'" >> ~/.bashrc
+echo "alias kgep='kubectl get endpoints'" >> ~/.bashrc
 echo "alias kgp='kubectl get pods -o wide'" >> ~/.bashrc
 echo "alias kgd='kubectl get deploy -o wide'" >> ~/.bashrc
 echo "alias kgs='kubectl get service -o wide'" >> ~/.bashrc
