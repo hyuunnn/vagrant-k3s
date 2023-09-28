@@ -14,6 +14,7 @@ $ vagrant up
 $ vagrant ssh master or ssh vagrant@localhost -p40010 or ssh vagrant@192.168.123.120
 $ vagrant@localhost's password: vagrant
 $ sudo -i
+$ (default:default) root@master:~#
 ```
 
 ### Worker Node
