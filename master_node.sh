@@ -100,6 +100,11 @@ echo "PS1='\$(kube_ps1) \u@\h:\W\\$ '" >> ~/.bashrc
 echo "KUBE_PS1_SYMBOL_ENABLE=false" >> ~/.bashrc
 source ~/.bashrc
 
+# kubetail install
+curl -O https://raw.githubusercontent.com/johanhaleby/kubetail/master/kubetail
+chmod 744 kubetail
+mv kubetail /sbin
+
 # https://youtu.be/UfKZPEk6D0k
 
 ## kubent install
