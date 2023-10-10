@@ -15,6 +15,6 @@ echo "set mouse=a" >> ~/.vimrc
 echo "set ignorecase" >> ~/.vimrc
 echo "set hlsearch" >> ~/.vimrc
 echo "set incsearch" >> ~/.vimrc
-echo "set softtabstop=2" >> ~/.vimrc
-echo "set tabstop=2" >> ~/.vimrc
-echo "set expandtab" >> ~/.vimrc
+
+# https://johngrib.github.io/wiki/vim/set-empty-chars/
+echo "set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab" >> ~/.vimrc
